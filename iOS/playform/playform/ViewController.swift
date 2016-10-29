@@ -41,6 +41,8 @@ class ViewController: UIViewController {
     internal var zoomPanGestureRecognizer: UIPanGestureRecognizer?
     internal var flipDoubleTapGestureRecognizer: UITapGestureRecognizer?
     
+    internal var zoomTracker: Float?
+    
     
     //MARK: - some firebase things
     var storageRef: FIRStorageReference!
@@ -67,6 +69,8 @@ class ViewController: UIViewController {
         
         
         storageRef = FIRStorage.storage().reference()
+        
+        zoomTracker = 0
         
         //Anonymous Auth -- temp
         if (FIRAuth.auth()?.currentUser == nil) {
@@ -163,6 +167,14 @@ class ViewController: UIViewController {
                 focusTapGestureRecognizer.numberOfTapsRequired = 1
                 gestureView.addGestureRecognizer(focusTapGestureRecognizer)
             }
+            
+            self.zoomPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleZoomPanGestureRecognizer(_:)))
+            if let zoomPanGestureRecognizer = self.zoomPanGestureRecognizer {
+                zoomPanGestureRecognizer.delegate = self
+                //zoomPanGestureRecognizer.
+                gestureView.addGestureRecognizer(zoomPanGestureRecognizer)
+            }
+            
         }
         
         // Configure NextLevel by modifying the configuration ivars
@@ -354,6 +366,24 @@ extension ViewController: UIGestureRecognizerDelegate {
         NextLevel.sharedInstance.focusExposeAndAdjustWhiteBalance(atAdjustedPoint: adjustedPoint)
     }
     
+    internal func handleZoomPanGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer){
+        if let gest = gestureRecognizer as? UIPanGestureRecognizer{
+            if zoomTracker! >= 0.0 && zoomTracker! <= 35.0{
+                print(zoomTracker)
+                print((Float(-gest.translation(in: gestureView).y)/64))
+                zoomTracker = zoomTracker! + atan2f((Float(-gest.translation(in: gestureView).y)/64), 5.0)
+                NextLevel.sharedInstance.videoZoomFactor = zoomTracker!
+            } else {
+                if (zoomTracker! - 35.0) < 2.0{
+                    zoomTracker = 0.0
+                    NextLevel.sharedInstance.videoZoomFactor = zoomTracker!
+                } else {
+                    zoomTracker = 35.0
+                    NextLevel.sharedInstance.videoZoomFactor = zoomTracker!
+                }
+            }
+        }
+    }
 }
 
 // MARK: - NextLevelDelegate
@@ -453,6 +483,7 @@ extension ViewController: NextLevelDelegate {
     
     // zoom
     func nextLevel(_ nextLevel: NextLevel, didUpdateVideoZoomFactor videoZoomFactor: Float) {
+        
     }
     
     // preview
