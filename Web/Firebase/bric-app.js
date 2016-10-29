@@ -11,25 +11,140 @@ firebase.initializeApp(config);
 
 var ref = firebase.database().ref().child("Events");
 
-ref.on('value', snap => {
-    var someJSON = JSON.stringify(snap.val());
-    var parse = JSON.parse(someJSON);
-    var dropdown = document.getElementById("dropdown");
-    for (var k in parse) {
-        var someList = document.createElement("option");
-        someList.text = k;
-        dropdown.appendChild(someList);
-        console.log(k);
-    }
-    $(function() {
 
-        $('#dropdown').material_select();
+function facebookAuth() {
 
+    // Initialize the FirebaseUI Widget using Firebase.
+    var provider = new firebase.auth.FacebookAuthProvider();
+    provider.addScope('user_birthday');
+
+    // The start method will wait until the DOM is loaded.
+
+
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+    }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+    });
+}
+function getDropdown() {
+    ref.on('value', snap => {
+        var someJSON = JSON.stringify(snap.val());
+        var parse = JSON.parse(someJSON);
+        var dropdown = document.getElementById("dropdown");
+        for (var k in parse) {
+            var someList = document.createElement("option");
+            someList.text = k;
+            dropdown.appendChild(someList);
+            console.log(k);
+        }
+        $(function() {
+
+            $('#dropdown').material_select();
+
+        });
+    })
+}
+
+
+function upload() {
+    var uploader = document.getElementById("uploader");
+    var fileButton = document.getElementById("file_input_file")
+
+    var theCat = sessionStorage.getItem("category");
+    fileButton.addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        var storageref = firebase.storage().ref(theCat + "/" + file.name);
+        var databaseref = firebase.database().ref("Events/" + theCat);
+        var task = storageref.put(file);
+
+        task.on('state_changed',
+
+                function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
+        },
+                function error(err) {
+
+        },
+                function complete() {
+            console.log("COMPLETED");
+
+
+            var newFileName = file.name.slice(0, -4);
+            //console.log(newFileName);
+            storageref.getDownloadURL().then(function(url) {
+                console.log(url);
+                databaseref.child(newFileName).set(url);
+            }).catch(function(error) {
+                console.log(error);
+            });
+            //databaseref.child(newFileName).set(storageref.getDownloadURL())
+        }
+
+               );
 
     });
+}
 
-})
+function loadPlayback() {
+    var category = sessionStorage.getItem("category");
+    var title = document.getElementById("title");
+    title.innerHTML = category;
+    //category = "fathers_day";
+    var newRef = ref.child(category);
+    var numVideosCount = 0;
+    var videos = new Array();
+    newRef.once('value').then(function(snapshot) {
+        var hello = JSON.stringify(snapshot.val());
+        var helloObj = JSON.parse(hello);
 
+        for (var key in helloObj) {
+            if (helloObj.hasOwnProperty(key)) {
+                numVideosCount++;
+                var currURL = helloObj[key];
+                videos.push(currURL);
+                console.log(currURL);
+            }
+        }
+        run(numVideosCount, videos);
+    });
+};
+
+var videoCount = 0;
+var currVideo = 0;
+var videoplayer = document.getElementById("playback");
+var allVideos = null;
+function run(count, vidArray) {
+    videoCount = count;
+    allVideos = vidArray;
+    var nextVideo = vidArray[currVideo];
+    videoplayer.src = nextVideo;
+    videoplayer.play();  
+    currVideo++;
+}
+
+function next() {
+    if(currVideo == videoCount) {
+        currVideo = 0;
+    }
+    var nextVideo = allVideos[currVideo];
+    videoplayer.src = nextVideo;
+    videoplayer.load(nextVideo);
+    videoplayer.play();  
+    currVideo++;  
+}
 function change() {
     console.log(document.getElementById("dropdown").value)
 }
@@ -54,66 +169,27 @@ fileInput.addEventListener('change', changeInputText);
 fileInput.addEventListener('change', changeState);
 
 function changeInputText() {
-  var str = fileInput.value;
-  var i;
-  if (str.lastIndexOf('\\')) {
-    i = str.lastIndexOf('\\') + 1;
-  } else if (str.lastIndexOf('/')) {
-    i = str.lastIndexOf('/') + 1;
-  }
-  fileInputText.value = str.slice(i, str.length);
+    var str = fileInput.value;
+    var i;
+    if (str.lastIndexOf('\\')) {
+        i = str.lastIndexOf('\\') + 1;
+    } else if (str.lastIndexOf('/')) {
+        i = str.lastIndexOf('/') + 1;
+    }
+    fileInputText.value = str.slice(i, str.length);
 }
 
 function changeState() {
-  if (fileInputText.value.length != 0) {
-    if (!fileInputTextDiv.classList.contains("is-focused")) {
-      fileInputTextDiv.classList.add('is-focused');
+    if (fileInputText.value.length != 0) {
+        if (!fileInputTextDiv.classList.contains("is-focused")) {
+            fileInputTextDiv.classList.add('is-focused');
+        }
+    } else {
+        if (fileInputTextDiv.classList.contains("is-focused")) {
+            fileInputTextDiv.classList.remove('is-focused');
+        }
     }
-  } else {
-    if (fileInputTextDiv.classList.contains("is-focused")) {
-      fileInputTextDiv.classList.remove('is-focused');
-    }
-  }
 }
 
 
-//            var uploader = document.getElementById("uploader");
-//            var fileButton = document.getElementById("fileButton")
-//
-//            fileButton.addEventListener('change', function(e) {
-//
-//                var file = e.target.files[0];
-//
-//                var storageref = firebase.storage().ref('fathers_day/' + file.name);
-//
-//                var databaseref = firebase.database().ref('fathers_day');
-//
-//                var task = storageref.put(file);
-//
-//                task.on('state_changed',
-//
-//                        function progress(snapshot) {
-//                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//                    uploader.value = percentage;
-//                },
-//                        function error(err) {
-//
-//                },
-//                        function complete() {
-//                    console.log("COMPLETED");
-//
-//
-//                    var newFileName = file.name.slice(0, -4);
-//                    //console.log(newFileName);
-//                    storageref.getDownloadURL().then(function(url) {
-//                        console.log(url);
-//                        databaseref.child(newFileName).set(url);
-//                    }).catch(function(error) {
-//                        console.log(error);
-//                    });
-//                    //databaseref.child(newFileName).set(storageref.getDownloadURL())
-//                }
-//
-//                       );
-//
-//            });
+//            

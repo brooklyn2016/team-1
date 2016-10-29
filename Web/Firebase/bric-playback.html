@@ -1,44 +1,82 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Bric Live</title>
+        <title>BRIC Live - Playback</title>
+
         <style media="screen">
-            body {
-                display: flex;
-                min-height: 100wh;
+            * {
+                margin: 0 auto;
+            }
+            #color-bar {
                 width: 100%;
-                padding: 0;
-                margin: 0;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
+                height: 170px;
+                background-color: rgb(63,81,181);
+                position: absolute;
+                z-index: -2;
+                top: 0;
             }
-
-            #uploader {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 50%;
-                margin-bottom: 10px; 
+            #nav-bar {
+                height: 50px;
+                width: 100%;
+                background-color: rgb(48,63,159);
             }
+            #content {
+                width: 1600px;
+                height: 1000px;
+                background-color: #ffffff;
+                z-index: 3;
+                margin-top: 80px;
+                box-shadow: 1px 1px 1px 1px #ccc;
+                padding-bottom:  100px;
 
+            }
+            #stuff {
+
+            }
+            #someh4 {
+                text-align: center;
+            }
+            #someh5 {
+                margin-bottom: 50px;
+                text-align: center;
+            }
+            #submitButton {
+                margin-left: 20%;
+                background: #3b5998;
+                margin-bottom: 100px;
+            }
+            #logo {
+                margin-left: 33%;
+            }
+            #playback {
+                margin-left: 19%;
+            }
+            #title {
+                text-align: center;
+                font-size: 50px;
+                font-family: monospace;
+                margin-bottom: 10px;
+            }
         </style>
     </head>
-    <body>
+    <body onload="loadPlayback()">
+
+
+        <div id="color-bar">
+            <div id="nav-bar"></div>
+        </div>
+
+        <div id="content">
+            <div id="stuff">
+                <p id="title"></p>
+                <video id="playback" width="1000" height="1000" autoplay onended="next()">
+                    <source src="" type='video/mp4'/>
+                </video>
+            </div>
+        </div>
         <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyD5CKyFLfaFZfo2g8Tak8-IuIeTrZTVD0Y",
-                authDomain: "bric-live.firebaseapp.com",
-                databaseURL: "https://bric-live.firebaseio.com",
-                storageBucket: "bric-live.appspot.com",
-                messagingSenderId: "144009791835"
-            };
-            firebase.initializeApp(config);
-            
-            var ref = firebase.database().ref.child("fathers_day").child("1.mp4");
-            
-        </script>
+        <script src="bric-app.js"></script>
+
     </body>
 </html>
 

@@ -25,15 +25,16 @@
 
             #content {
                 width: 50%;
-                height: 400px;
+                height: 470px;
                 background-color: #ffffff;
                 z-index: 3;
                 margin-top: 80px;
                 box-shadow: 1px 1px 1px 1px #ccc;
+                padding-bottom:  100px;
 
             }
             #stuff {
-                margin-top: 15px;
+                
             }
             #someh4 {
                 text-align: center;
@@ -43,12 +44,18 @@
                 text-align: center;
             }
             #submitButton {
+                margin-top: 40px;
                 margin-left: 20%;
+                background: #3b5998;
+                margin-bottom: 100px;
+            }
+            #logo {
+                margin-left: 33%;
             }
         </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     </head>
-    <body bgcolor="#EEEEEE">
+    <body bgcolor="#EEEEEE" onload="getDropdown()">
 
         <!-- Dropdown Trigger -->
         <!--        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!</a>-->
@@ -61,13 +68,13 @@
 
         <div id="content">
             <div id="stuff">
-                <h3 id="someh4"> Welcome to BRIC Live</h3>
+                <img id="logo" src="images/BRIC%20LIVE%20app%20logo.png" style="width:200px;height:200;">
                 <h5 id="someh5"> Please select a category</h5>
                 <select id="dropdown" onchange="change()">
                 </select>
 
                 <a class="center-alight waves-effect waves-light btn" id="submitButton" onclick="uploadButton()">Upload</a>
-                <a class="center-alight waves-effect waves-light btn" id="submitButton" onclick="viewButton()">View</a>
+                <a class="waves-effect waves-light btn" id="submitButton" onclick="viewButton()">View</a>
 
             </div>
         </div>
