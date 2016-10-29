@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.0.1)
+  - LLSimpleCamera (4.2.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - LLSimpleCamera (~> 4.1)
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  LLSimpleCamera: ed7813ce4827ff3e34c6af159c99b5b56e54d1c6
+
+PODFILE CHECKSUM: 710864dbe11ba4f7730bcb6f33fcce414f1b4197
+
+COCOAPODS: 1.1.0.rc.2
