@@ -1,5 +1,4 @@
-# Code for Good 2016
-# Team 1
+# Code for Good 2016 - Team 1
 
 Members:
 - Rafi Rizwan
