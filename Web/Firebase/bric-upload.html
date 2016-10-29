@@ -41,46 +41,57 @@
             };
             firebase.initializeApp(config);
 
-            var uploader = document.getElementById("uploader");
-            var fileButton = document.getElementById("fileButton")
-
-            fileButton.addEventListener('change', function(e) {
-
-                var file = e.target.files[0];
-
-                var storageref = firebase.storage().ref('fathers_day/' + file.name);
-
-                var databaseref = firebase.database().ref('fathers_day');
-
-                var task = storageref.put(file);
-
-                task.on('state_changed',
-
-                        function progress(snapshot) {
-                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    uploader.value = percentage;
-                },
-                        function error(err) {
-
-                },
-                        function complete() {
-                    console.log("COMPLETED");
-
-
-                    var newFileName = file.name.slice(0, -4);
-                    //console.log(newFileName);
-                    storageref.getDownloadURL().then(function(url) {
-                        console.log(url);
-                        databaseref.child(newFileName).set(url);
-                    }).catch(function(error) {
-                        console.log(error);
-                    });
-                    //databaseref.child(newFileName).set(storageref.getDownloadURL())
+            var ref = firebase.database().ref().child("Events");
+            
+            ref.on('value', snap => {
+                var someJSON = JSON.stringify(snap.val());
+                var parse = JSON.parse(someJSON);
+                for (var k in parse) {
+                    console.log(k);
                 }
+            })
 
-                       );
 
-            });
+            //            var uploader = document.getElementById("uploader");
+            //            var fileButton = document.getElementById("fileButton")
+            //
+            //            fileButton.addEventListener('change', function(e) {
+            //
+            //                var file = e.target.files[0];
+            //
+            //                var storageref = firebase.storage().ref('fathers_day/' + file.name);
+            //
+            //                var databaseref = firebase.database().ref('fathers_day');
+            //
+            //                var task = storageref.put(file);
+            //
+            //                task.on('state_changed',
+            //
+            //                        function progress(snapshot) {
+            //                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            //                    uploader.value = percentage;
+            //                },
+            //                        function error(err) {
+            //
+            //                },
+            //                        function complete() {
+            //                    console.log("COMPLETED");
+            //
+            //
+            //                    var newFileName = file.name.slice(0, -4);
+            //                    //console.log(newFileName);
+            //                    storageref.getDownloadURL().then(function(url) {
+            //                        console.log(url);
+            //                        databaseref.child(newFileName).set(url);
+            //                    }).catch(function(error) {
+            //                        console.log(error);
+            //                    });
+            //                    //databaseref.child(newFileName).set(storageref.getDownloadURL())
+            //                }
+            //
+            //                       );
+            //
+            //            });
         </script>
     </body>
 </html>
