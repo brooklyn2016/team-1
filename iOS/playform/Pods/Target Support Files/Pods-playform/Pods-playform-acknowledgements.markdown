@@ -24,6 +24,46 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## Firebase
+
+Copyright 2016 Google
+
+## FirebaseAnalytics
+
+Copyright 2016 Google
+
+## FirebaseAuth
+
+Copyright 2016 Google
+
+## FirebaseDatabase
+
+Copyright 2016 Google
+
+## FirebaseInstanceID
+
+Copyright 2016 Google
+
+## FirebaseStorage
+
+Copyright 2016 Google
+
+## GoogleInterchangeUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleNetworkingUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleSymbolUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleUtilities
+
+Copyright 2015 Google Inc.
+
 ## LLSimpleCamera
 
 Apache License, Version 2.0 Apache License Version 2.0, January 2004 http://www.apache.org/licenses/
