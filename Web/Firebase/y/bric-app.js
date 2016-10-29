@@ -11,29 +11,31 @@ firebase.initializeApp(config);
 
 var ref = firebase.database().ref().child("Events");
 
-
-function facebookAuth() {
-
-
-
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    // The start method will wait until the DOM is loaded.
-
-
-    ui.start('#firebaseui-auth-container', {
-        'signInOptions': [
-            {
-                provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-                scopes: [
-                    'public_profile',
-                    'email'
-                ]
-            },
-        ]
-    });
-
-}
+//
+//function facebookAuth() {
+//
+//
+//
+//    // Initialize the FirebaseUI Widget using Firebase.
+//    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+//    // The start method will wait until the DOM is loaded.
+//
+//
+//    ui.start('#firebaseui-auth-container', {
+//        'signInOptions': [
+//            {
+//                provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+//                scopes: [
+//                    'public_profile',
+//                    'email'
+//                ]
+//            },
+//        ]
+//    });
+//    
+//    //document.location.href = "bric.html"
+//
+//}
 function getDropdown() {
     ref.on('value', snap => {
         var someJSON = JSON.stringify(snap.val());

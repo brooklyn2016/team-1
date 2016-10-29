@@ -1,10 +1,8 @@
-<!DOCTYPE html>
 <html>
     <head>
+
         <meta charset="utf-8">
         <title>Bric Live</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-
         <style media="screen">
             * {
                 margin: 0 auto;
@@ -36,7 +34,7 @@
 
             }
             #stuff {
-
+                
             }
             #someh4 {
                 text-align: center;
@@ -55,16 +53,13 @@
                 margin-left: 33%;
             }
         </style>
-        <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-
-        <script src="bric-app.js"></script>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     </head>
-    <body onload="facebookAuth()">
+    <body bgcolor="#EEEEEE" onload="getDropdown()">
+
+        <!-- Dropdown Trigger -->
+        <!--        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!</a>-->
+
         <div id="color-bar">
             <div id="nav-bar"></div>
 
@@ -73,12 +68,27 @@
 
         <div id="content">
             <div id="stuff">
-
                 <img id="logo" src="images/BRIC%20LIVE%20app%20logo.png" style="width:200px;height:200;">
-                <div id="firebaseui-auth-container"></div>
+                <h6 id="someh5"> Please select a category</h6>
+                <select id="dropdown" onchange="change()">
+                </select>
+
+                <a class="center-alight waves-effect waves-light btn" id="submitButton" onclick="uploadButton()">Upload</a>
+                <a class="waves-effect waves-light btn" id="submitButton" onclick="viewButton()">View</a>
 
             </div>
         </div>
 
+
+        <!--
+<progress value="0" max="100" id="uploader">0%</progress>
+<input type="file" value="upload" id="fileButton"/>
+-->
+        <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+        <script src="bric-app.js"></script>
     </body>
 </html>
+
