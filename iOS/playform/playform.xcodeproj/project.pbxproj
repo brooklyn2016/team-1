@@ -15,6 +15,7 @@
 		E41F5C3C1DC4246B00682917 /* NextLevelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F5C351DC4246B00682917 /* NextLevelConfiguration.swift */; };
 		E41F5C3D1DC4246B00682917 /* NextLevelSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F5C361DC4246B00682917 /* NextLevelSession.swift */; };
 		E42B165E1DC42CBF0032D3DA /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = E42B165D1DC42CBF0032D3DA /* Sources */; };
+		E42B16601DC446850032D3DA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E42B165F1DC446850032D3DA /* GoogleService-Info.plist */; };
 		E483B8331DC34C2200728383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483B8321DC34C2200728383 /* AppDelegate.swift */; };
 		E483B8351DC34C2200728383 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483B8341DC34C2200728383 /* ViewController.swift */; };
 		E483B8381DC34C2200728383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E483B8361DC34C2200728383 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		E41F5C351DC4246B00682917 /* NextLevelConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextLevelConfiguration.swift; sourceTree = "<group>"; };
 		E41F5C361DC4246B00682917 /* NextLevelSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextLevelSession.swift; sourceTree = "<group>"; };
 		E42B165D1DC42CBF0032D3DA /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
+		E42B165F1DC446850032D3DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E483B82F1DC34C2200728383 /* playform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E483B8321DC34C2200728383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E483B8341DC34C2200728383 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				E483B8391DC34C2200728383 /* Assets.xcassets */,
 				E483B83B1DC34C2200728383 /* LaunchScreen.storyboard */,
 				E483B83E1DC34C2200728383 /* Info.plist */,
+				E42B165F1DC446850032D3DA /* GoogleService-Info.plist */,
 			);
 			path = playform;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			files = (
 				E483B83D1DC34C2200728383 /* LaunchScreen.storyboard in Resources */,
 				E483B83A1DC34C2200728383 /* Assets.xcassets in Resources */,
+				E42B16601DC446850032D3DA /* GoogleService-Info.plist in Resources */,
 				E483B8381DC34C2200728383 /* Main.storyboard in Resources */,
 				E42B165E1DC42CBF0032D3DA /* Sources in Resources */,
 			);
@@ -527,7 +531,7 @@
 				INFOPLIST_FILE = playform/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vi66r.playform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BRIC.playform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -542,7 +546,7 @@
 				INFOPLIST_FILE = playform/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vi66r.playform;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BRIC.playform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

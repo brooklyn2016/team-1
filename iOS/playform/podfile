@@ -5,6 +5,11 @@ use_frameworks!
 target 'playform' do
   pod 'Alamofire', '~> 4.0'
   pod 'LLSimpleCamera', '~> 4.1'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+
 end
 
 post_install do |installer|

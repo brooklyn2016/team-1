@@ -9,13 +9,16 @@
 import UIKit
 import AVFoundation
 import Photos
-//import NextLevel
+import Firebase
+import FirebaseAuth
+import FirebaseStorage
 
-let CameraViewControllerAlbumTitle = "Next Level"
+let ViewControllerAlbumTitle = "BRIC Live"
 
-class CameraViewController: UIViewController {
+class ViewController: UIViewController {
     
     // MARK: - UIViewController
+    
     
     override public var prefersStatusBarHidden: Bool {
         return true
@@ -38,6 +41,10 @@ class CameraViewController: UIViewController {
     internal var zoomPanGestureRecognizer: UIPanGestureRecognizer?
     internal var flipDoubleTapGestureRecognizer: UITapGestureRecognizer?
     
+    
+    //MARK: - some firebase things
+    var storageRef: FIRStorageReference!
+    
     // MARK: - object lifecycle
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -57,6 +64,23 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        storageRef = FIRStorage.storage().reference()
+        
+        //Anonymous Auth -- temp
+        if (FIRAuth.auth()?.currentUser == nil) {
+            FIRAuth.auth()?.signInAnonymously(completion: { (user: FIRUser?, error: Error?) in
+                if let error = error {
+                    
+                    
+                } else {
+                    
+                    
+                }
+            })
+        }
+
         
         self.view.backgroundColor = UIColor.black
         self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -147,8 +171,6 @@ class CameraViewController: UIViewController {
         
         // video configuration
         nextLevel.videoConfiguration.bitRate = 12000000
-        //        nextLevel.videoConfiguration.dimensions = CGSize(width: 1920, height: 1080)
-        //        nextLevel.videoConfiguration.scalingMode = AVVideoScalingModeResizeAspectFill
         
         // audio configuration
         nextLevel.audioConfiguration.bitRate = 128000
@@ -163,7 +185,7 @@ class CameraViewController: UIViewController {
             do {
                 try nextLevel.start()
             } catch {
-                print("NextLevel, failed to start camera session")
+                print("BRIC Live, failed to start camera session")
             }
         } else {
             nextLevel.requestAuthorization(forMediaType: AVMediaTypeVideo)
@@ -181,7 +203,7 @@ class CameraViewController: UIViewController {
 
 // MARK: - library
 
-extension CameraViewController {
+extension ViewController {
     
     internal func albumAssetCollection(withTitle title: String) -> PHAssetCollection? {
         let predicate = NSPredicate(format: "localizedTitle = %@", title)
@@ -198,7 +220,7 @@ extension CameraViewController {
 
 // MARK: - capture
 
-extension CameraViewController {
+extension ViewController {
     
     internal func startCapture() {
         self.photoTapGestureRecognizer?.isEnabled = false
@@ -220,20 +242,33 @@ extension CameraViewController {
     internal func endCapture() {
         self.photoTapGestureRecognizer?.isEnabled = true
         NextLevel.sharedInstance.session?.mergeClips(usingPreset: AVAssetExportPresetHighestQuality, completionHandler: { (url: URL?, error: Error?) in
+            
+            let filepath = "fathers_day" + "test" + url!.lastPathComponent
+            
+            self.storageRef.child(filepath)
+                .putFile(url!, metadata: nil) { (metadata, error) in
+                    if let error = error {
+                        print("Error uploading: \(error)")
+                        //self.urlTextView.text = "Upload Failed"
+                        return
+                    }
+                    //self.uploadSuccess(metadata!, storagePath: filepath)
+            }
+            
             if let videoURL = url {
                 
                 PHPhotoLibrary.shared().performChanges({
                     
-                    let albumAssetCollection = self.albumAssetCollection(withTitle: CameraViewControllerAlbumTitle)
+                    let albumAssetCollection = self.albumAssetCollection(withTitle: ViewControllerAlbumTitle)
                     if albumAssetCollection == nil {
-                        let changeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: CameraViewControllerAlbumTitle)
+                        let changeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: ViewControllerAlbumTitle)
                         let _ = changeRequest.placeholderForCreatedAssetCollection
                     }
                     
                 }, completionHandler: { (success1: Bool, error1: Error?) in
                     
                     if success1 == true {
-                        if let albumAssetCollection = self.albumAssetCollection(withTitle: CameraViewControllerAlbumTitle) {
+                        if let albumAssetCollection = self.albumAssetCollection(withTitle: ViewControllerAlbumTitle) {
                             PHPhotoLibrary.shared().performChanges({
                                 if let assetChangeRequest = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoURL) {
                                     let assetCollectionChangeRequest = PHAssetCollectionChangeRequest(for: albumAssetCollection)
@@ -269,7 +304,7 @@ extension CameraViewController {
 
 // MARK: - UIButton
 
-extension CameraViewController {
+extension ViewController {
     
     internal func handleFlipButton(_ button: UIButton) {
         NextLevel.sharedInstance.flipCaptureDevicePosition()
@@ -286,7 +321,7 @@ extension CameraViewController {
 
 // MARK: - UIGestureRecognizer
 
-extension CameraViewController: UIGestureRecognizerDelegate {
+extension ViewController: UIGestureRecognizerDelegate {
     
     internal func handleLongPressGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
         switch gestureRecognizer.state {
@@ -323,21 +358,21 @@ extension CameraViewController: UIGestureRecognizerDelegate {
 
 // MARK: - NextLevelDelegate
 
-extension CameraViewController: NextLevelDelegate {
+extension ViewController: NextLevelDelegate {
     
     // permission
     func nextLevel(_ nextLevel: NextLevel, didUpdateAuthorizationStatus status: NextLevelAuthorizationStatus, forMediaType mediaType: String) {
-        print("NextLevel, authorization updated for media \(mediaType) status \(status)")
+        print("BRIC Live, authorization updated for media \(mediaType) status \(status)")
         if nextLevel.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized &&
             nextLevel.authorizationStatus(forMediaType: AVMediaTypeAudio) == .authorized {
             do {
                 try nextLevel.start()
             } catch {
-                print("NextLevel, failed to start camera session")
+                print("BRIC Live, failed to start camera session")
             }
         } else if status == .notAuthorized {
             // gracefully handle when audio/video is not authorized
-            print("NextLevel doesn't have authorization for audio or video")
+            print("BRIC Live doesn't have authorization for audio or video")
         }
     }
     
@@ -476,16 +511,16 @@ extension CameraViewController: NextLevelDelegate {
             
             PHPhotoLibrary.shared().performChanges({
                 
-                let albumAssetCollection = self.albumAssetCollection(withTitle: CameraViewControllerAlbumTitle)
+                let albumAssetCollection = self.albumAssetCollection(withTitle: ViewControllerAlbumTitle)
                 if albumAssetCollection == nil {
-                    let changeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: CameraViewControllerAlbumTitle)
+                    let changeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: ViewControllerAlbumTitle)
                     let _ = changeRequest.placeholderForCreatedAssetCollection
                 }
                 
             }, completionHandler: { (success1: Bool, error1: Error?) in
                 
                 if success1 == true {
-                    if let albumAssetCollection = self.albumAssetCollection(withTitle: CameraViewControllerAlbumTitle) {
+                    if let albumAssetCollection = self.albumAssetCollection(withTitle: ViewControllerAlbumTitle) {
                         PHPhotoLibrary.shared().performChanges({
                             if let photoImage = UIImage(data: photoData as! Data) {
                                 let assetChangeRequest = PHAssetChangeRequest.creationRequestForAsset(from: photoImage)
@@ -526,16 +561,16 @@ extension CameraViewController: NextLevelDelegate {
             
             PHPhotoLibrary.shared().performChanges({
                 
-                let albumAssetCollection = self.albumAssetCollection(withTitle: CameraViewControllerAlbumTitle)
+                let albumAssetCollection = self.albumAssetCollection(withTitle: ViewControllerAlbumTitle)
                 if albumAssetCollection == nil {
-                    let changeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: CameraViewControllerAlbumTitle)
+                    let changeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: ViewControllerAlbumTitle)
                     let _ = changeRequest.placeholderForCreatedAssetCollection
                 }
                 
             }, completionHandler: { (success1: Bool, error1: Error?) in
                 
                 if success1 == true {
-                    if let albumAssetCollection = self.albumAssetCollection(withTitle: CameraViewControllerAlbumTitle) {
+                    if let albumAssetCollection = self.albumAssetCollection(withTitle: ViewControllerAlbumTitle) {
                         PHPhotoLibrary.shared().performChanges({
                             if let photoImage = UIImage(data: photoData as! Data) {
                                 let assetChangeRequest = PHAssetChangeRequest.creationRequestForAsset(from: photoImage)
