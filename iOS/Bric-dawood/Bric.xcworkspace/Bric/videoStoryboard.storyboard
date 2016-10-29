@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qf3-Rr-P2K">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Video View Controller-->
+        <scene sceneID="XCZ-56-pga">
+            <objects>
+                <viewController id="Qf3-Rr-P2K" customClass="videoViewController" customModule="Bric" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CsV-nk-EQG"/>
+                        <viewControllerLayoutGuide type="bottom" id="JUK-4Y-owC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4mG-Z3-lCl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="245" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="koK-sV-7L9">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VideoCell" rowHeight="245" id="5bk-DL-pjW">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="245"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5bk-DL-pjW" id="oUG-rP-Ugj">
+                                            <frame key="frameInset" width="375" height="244"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="koK-sV-7L9" firstAttribute="leading" secondItem="4mG-Z3-lCl" secondAttribute="leading" id="8DJ-zX-v02"/>
+                            <constraint firstItem="koK-sV-7L9" firstAttribute="top" secondItem="CsV-nk-EQG" secondAttribute="bottom" constant="18" id="V0d-nd-S81"/>
+                            <constraint firstItem="koK-sV-7L9" firstAttribute="bottom" secondItem="JUK-4Y-owC" secondAttribute="top" id="ZVY-HN-ChE"/>
+                            <constraint firstAttribute="trailing" secondItem="koK-sV-7L9" secondAttribute="trailing" id="oRl-V6-g4Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="koK-sV-7L9" id="ghr-e2-sHk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uub-NJ-wBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1135.2" y="165.06746626686657"/>
+        </scene>
+    </scenes>
+</document>

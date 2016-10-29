@@ -40,11 +40,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-fd-Gz6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-fd-Gz6">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="71" id="dR3-nG-qWJ"/>
+                                    <constraint firstAttribute="width" constant="120" id="f1M-hZ-Mb0"/>
                                 </constraints>
-                                <state key="normal" title="Upload"/>
+                                <state key="normal" image="UPLOAD BUTTON.png"/>
                                 <connections>
                                     <action selector="upload:" destination="fy5-up-x64" eventType="touchUpInside" id="662-yR-i8P"/>
                                 </connections>
@@ -52,14 +52,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cIh-j8-ZAC" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leadingMargin" constant="62" id="Pdk-wu-xsf"/>
-                            <constraint firstAttribute="bottom" secondItem="AeA-fd-Gz6" secondAttribute="bottom" constant="20" symbolic="YES" id="UAa-TC-UVe"/>
-                            <constraint firstItem="ZWd-SY-EON" firstAttribute="top" secondItem="cIh-j8-ZAC" secondAttribute="bottom" constant="43" id="Xgm-v6-YlK"/>
+                            <constraint firstItem="AeA-fd-Gz6" firstAttribute="top" secondItem="ZWd-SY-EON" secondAttribute="bottom" constant="17" id="KUC-mJ-H7A"/>
+                            <constraint firstItem="cIh-j8-ZAC" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leadingMargin" constant="42" id="Pdk-wu-xsf"/>
+                            <constraint firstItem="ZWd-SY-EON" firstAttribute="top" secondItem="cIh-j8-ZAC" secondAttribute="bottom" constant="45" id="Xgm-v6-YlK"/>
                             <constraint firstAttribute="trailing" secondItem="ZWd-SY-EON" secondAttribute="trailing" id="Y7j-cl-ySf"/>
                             <constraint firstItem="ZWd-SY-EON" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leading" id="Zaz-zs-rgN"/>
+                            <constraint firstItem="fj8-C2-bCQ" firstAttribute="top" secondItem="AeA-fd-Gz6" secondAttribute="bottom" constant="27" id="eBD-kM-LRR"/>
                             <constraint firstItem="fj8-C2-bCQ" firstAttribute="top" secondItem="ZWd-SY-EON" secondAttribute="bottom" constant="83" id="fB9-tV-Kb7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cIh-j8-ZAC" secondAttribute="trailing" constant="72" id="m5B-Aw-YNP"/>
-                            <constraint firstItem="AeA-fd-Gz6" firstAttribute="centerX" secondItem="cIh-j8-ZAC" secondAttribute="centerX" id="uDF-tF-66R"/>
+                            <constraint firstItem="AeA-fd-Gz6" firstAttribute="centerX" secondItem="ZWd-SY-EON" secondAttribute="centerX" id="kzy-GV-8As"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cIh-j8-ZAC" secondAttribute="trailing" constant="42" id="m5B-Aw-YNP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -72,4 +73,7 @@
             <point key="canvasLocation" x="-327.19999999999999" y="104.7976011994003"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="UPLOAD BUTTON.png" width="543" height="232"/>
+    </resources>
 </document>

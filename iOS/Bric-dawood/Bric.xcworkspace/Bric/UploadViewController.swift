@@ -8,11 +8,17 @@
 
 import UIKit
 
-class UploadViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UploadViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var tableView: UITableView!
-    let tagsArray = ["blah1", "blah2", "blah3", "blah4"]
+    
+    let tagsArray: [UIImage] = [
+        UIImage(named: "BRIC FLIX BUTTON.png")!,
+        UIImage(named: "BRIC FAM JAM BUTTON.png")!,
+        UIImage(named: "BK HOUSE PARTY BUTTON.png")!
+    ]
+
     let textCellIdentifier = "TagCell"
 
     
@@ -27,6 +33,12 @@ class UploadViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         
         self.tableView.setEditing(true, animated: true)
+        self.titleTextField.delegate = self;
+
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UploadViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
     }
     
     
@@ -43,7 +55,9 @@ class UploadViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath as IndexPath)
         
         let row = indexPath.row
-        cell.textLabel?.text = tagsArray[row]
+        
+        cell.imageView?.image = tagsArray[row]
+        //cell.textLabel?.text = tagsArray[row]
         
         return cell
     }
@@ -69,13 +83,25 @@ class UploadViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle(rawValue: 3)!
     }
-
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Tags:"
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleTextField.resignFirstResponder()
+        return true
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     
    
