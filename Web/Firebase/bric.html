@@ -1,0 +1,87 @@
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <title>Bric Live</title>
+        <style media="screen">
+            * {
+                margin: 0 auto;
+            }
+
+            #color-bar {
+                width: 100%;
+                height: 150px;
+                background-color: rgb(63,81,181);
+                position: absolute;
+                z-index: -2;
+                top: 0;
+            }
+
+            #nav-bar {
+                height: 30px;
+                width: 100%;
+                background-color: rgb(48,63,159);
+            }
+
+            #content {
+                width: 50%;
+                height: 400px;
+                background-color: #ffffff;
+                z-index: 3;
+                margin-top: 80px;
+                box-shadow: 1px 1px 1px 1px #ccc;
+
+            }
+            #stuff {
+                margin-top: 15px;
+            }
+            #someh4 {
+                text-align: center;
+            }
+            #someh5 {
+                margin-bottom: 50px;
+                text-align: center;
+            }
+            #submitButton {
+                margin-left: 20%;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    </head>
+    <body bgcolor="#EEEEEE">
+
+        <!-- Dropdown Trigger -->
+        <!--        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!</a>-->
+
+        <div id="color-bar">
+            <div id="nav-bar"></div>
+
+
+        </div>
+
+        <div id="content">
+            <div id="stuff">
+                <h3 id="someh4"> Welcome to BRIC Live</h3>
+                <h5 id="someh5"> Please select a category</h5>
+                <select id="dropdown" onchange="change()">
+                </select>
+
+                <a class="center-alight waves-effect waves-light btn" id="submitButton" onclick="uploadButton()">Upload</a>
+                <a class="center-alight waves-effect waves-light btn" id="submitButton" onclick="viewButton()">View</a>
+
+            </div>
+        </div>
+
+
+        <!--
+<progress value="0" max="100" id="uploader">0%</progress>
+<input type="file" value="upload" id="fileButton"/>
+-->
+        <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+        <script src="bric-app.js"></script>
+    </body>
+</html>
+

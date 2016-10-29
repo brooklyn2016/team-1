@@ -1,98 +1,159 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Bric Live</title>
+        <title>Bric Live - Upload</title>
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <style media="screen">
-            body {
-                display: flex;
-                min-height: 100wh;
+            * {
+                margin: 0 auto;
+            }
+            #color-bar {
                 width: 100%;
-                padding: 0;
-                margin: 0;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
+                height: 150px;
+                background-color: rgb(63,81,181);
+                position: absolute;
+                z-index: -2;
+                top: 0;
             }
-
-            #uploader {
-                -webkit-appearance: none;
-                appearance: none;
+            #nav-bar {
+                height: 30px;
+                width: 100%;
+                background-color: rgb(48,63,159);
+            }
+            #content {
                 width: 50%;
-                margin-bottom: 10px; 
+                height: 400px;
+                background-color: #ffffff;
+                z-index: 3;
+                margin-top: 80px;
+                box-shadow: 1px 1px 1px 1px #ccc;
             }
 
+            .file_input_div {
+                margin: auto;
+                width: 250px;
+                height: 40px;
+            }
+
+            .file_input {
+                float: left;
+                margin-top: 100px;
+            }
+
+            #file_input_text_div {
+                width: 200px;
+                margin-top: 92px;
+                margin-left: 5px;
+            }
+            .none {
+                display: none;
+            }
+            #stuff {
+                margin-top: 15px;
+            }
+            #uploader {
+                margin-bottom: 15px;
+            }
+            #uploadHeader {
+                margin-top: 50px;
+                vertical-align: middle;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
 
 
-        <progress value="0" max="100" id="uploader">0%</progress>
-        <input type="file" value="upload" id="fileButton"/>
 
+        <div id="color-bar">
+            <div id="nav-bar"></div>
+        </div>
+
+        <div id="content">
+            <h5 id="uploadHeader"> Please upload your file:</h5>
+            <div class="file_input_div">
+                <div class="file_input">
+                    <label class="image_input_button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored" id="someLabel">
+                        <i class="material-icons">file_upload</i>
+                        <input id="file_input_file" class="none" type="file" />
+                    </label>
+                </div>
+                <div id="file_input_text_div" class="mdl-textfield mdl-js-textfield textfield-demo">
+                    <input class="file_input_text mdl-textfield__input" type="text" disabled readonly id="file_input_text" />
+                    <label class="mdl-textfield__label" for="file_input_text"></label>
+                </div>
+            </div>
+        </div>
         <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyD5CKyFLfaFZfo2g8Tak8-IuIeTrZTVD0Y",
-                authDomain: "bric-live.firebaseapp.com",
-                databaseURL: "https://bric-live.firebaseio.com",
-                storageBucket: "bric-live.appspot.com",
-                messagingSenderId: "144009791835"
-            };
-            firebase.initializeApp(config);
+        <script src="bric-app.js"></script>
+        <!--
+<script>
+// Initialize Firebase
+var config = {
+apiKey: "AIzaSyD5CKyFLfaFZfo2g8Tak8-IuIeTrZTVD0Y",
+authDomain: "bric-live.firebaseapp.com",
+databaseURL: "https://bric-live.firebaseio.com",
+storageBucket: "bric-live.appspot.com",
+messagingSenderId: "144009791835"
+};
+firebase.initializeApp(config);
 
-            var ref = firebase.database().ref().child("Events");
-            
-            ref.on('value', snap => {
-                var someJSON = JSON.stringify(snap.val());
-                var parse = JSON.parse(someJSON);
-                for (var k in parse) {
-                    console.log(k);
-                }
-            })
+var ref = firebase.database().ref().child("Events");
+
+ref.on('value', snap => {
+var someJSON = JSON.stringify(snap.val());
+var parse = JSON.parse(someJSON);
+for (var k in parse) {
+console.log(k);
+}
+})
 
 
-            //            var uploader = document.getElementById("uploader");
-            //            var fileButton = document.getElementById("fileButton")
-            //
-            //            fileButton.addEventListener('change', function(e) {
-            //
-            //                var file = e.target.files[0];
-            //
-            //                var storageref = firebase.storage().ref('fathers_day/' + file.name);
-            //
-            //                var databaseref = firebase.database().ref('fathers_day');
-            //
-            //                var task = storageref.put(file);
-            //
-            //                task.on('state_changed',
-            //
-            //                        function progress(snapshot) {
-            //                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            //                    uploader.value = percentage;
-            //                },
-            //                        function error(err) {
-            //
-            //                },
-            //                        function complete() {
-            //                    console.log("COMPLETED");
-            //
-            //
-            //                    var newFileName = file.name.slice(0, -4);
-            //                    //console.log(newFileName);
-            //                    storageref.getDownloadURL().then(function(url) {
-            //                        console.log(url);
-            //                        databaseref.child(newFileName).set(url);
-            //                    }).catch(function(error) {
-            //                        console.log(error);
-            //                    });
-            //                    //databaseref.child(newFileName).set(storageref.getDownloadURL())
-            //                }
-            //
-            //                       );
-            //
-            //            });
-        </script>
-    </body>
+//            var uploader = document.getElementById("uploader");
+//            var fileButton = document.getElementById("fileButton")
+//
+//            fileButton.addEventListener('change', function(e) {
+//
+//                var file = e.target.files[0];
+//
+//                var storageref = firebase.storage().ref('fathers_day/' + file.name);
+//
+//                var databaseref = firebase.database().ref('fathers_day');
+//
+//                var task = storageref.put(file);
+//
+//                task.on('state_changed',
+//
+//                        function progress(snapshot) {
+//                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//                    uploader.value = percentage;
+//                },
+//                        function error(err) {
+//
+//                },
+//                        function complete() {
+//                    console.log("COMPLETED");
+//
+//
+//                    var newFileName = file.name.slice(0, -4);
+//                    //console.log(newFileName);
+//                    storageref.getDownloadURL().then(function(url) {
+//                        console.log(url);
+//                        databaseref.child(newFileName).set(url);
+//                    }).catch(function(error) {
+//                        console.log(error);
+//                    });
+//                    //databaseref.child(newFileName).set(storageref.getDownloadURL())
+//                }
+//
+//                       );
+//
+//            });
+
+</script>
+-->
+</body>
 </html>
 
