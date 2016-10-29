@@ -1,0 +1,26 @@
+
+
+<div class="login">
+    <input type="text" placeholder="Username" id="username">  
+  <input type="password" placeholder="password" id="password">  
+  <a href="#" class="forgot">forgot password?</a>
+  <input type="submit" value="Sign In">
+</div>
+<div class="shadow"></div>
+<button onclick="fblogin()">Sign in with Facebook</button>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+<script type="text/javascript" src="authentication.js"></script>
+<link rel=stylesheet type="text/css" href="authentication.css">
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD5CKyFLfaFZfo2g8Tak8-IuIeTrZTVD0Y",
+    authDomain: "bric-live.firebaseapp.com",
+    databaseURL: "https://bric-live.firebaseio.com",
+    storageBucket: "bric-live.appspot.com",
+    messagingSenderId: "144009791835"
+  };
+  firebase.initializeApp(config);
+</script>
