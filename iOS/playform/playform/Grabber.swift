@@ -50,23 +50,16 @@ class Grabber: NSObject {
     }
     
     func putData(url: URL, category: String){
-        
         var meta: FIRStorageMetadata?
         var metaURL: String?
-        
         let diceRoll = String(Int(arc4random_uniform(99999999) + 1)) + ".mp4"
-        
         self.storageRef.child(category).child(diceRoll)
             .putFile(url, metadata: nil) { (metadata, error) in
-                
                 meta = metadata
                 metaURL = metadata?.downloadURL()?.absoluteString
                 print(metaURL)
-                
                 self.syncData(metaURL: metaURL!, category: category, diceRoll: diceRoll)
-                
         }
-        
     }
     
     func syncData(metaURL: String, category: String, diceRoll: String){
