@@ -16,6 +16,11 @@
 		E41F5C3D1DC4246B00682917 /* NextLevelSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F5C361DC4246B00682917 /* NextLevelSession.swift */; };
 		E42B165E1DC42CBF0032D3DA /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = E42B165D1DC42CBF0032D3DA /* Sources */; };
 		E42B16601DC446850032D3DA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E42B165F1DC446850032D3DA /* GoogleService-Info.plist */; };
+		E42B16621DC46F9A0032D3DA /* Grabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42B16611DC46F9A0032D3DA /* Grabber.swift */; };
+		E42B16651DC4728B0032D3DA /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42B16631DC4728B0032D3DA /* VideoTableViewController.swift */; };
+		E42B16661DC4728B0032D3DA /* VideoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E42B16641DC4728B0032D3DA /* VideoTableViewController.xib */; };
+		E42B16691DC4729B0032D3DA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42B16671DC4729B0032D3DA /* VideoTableViewCell.swift */; };
+		E42B166A1DC4729B0032D3DA /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E42B16681DC4729B0032D3DA /* VideoTableViewCell.xib */; };
 		E483B8331DC34C2200728383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483B8321DC34C2200728383 /* AppDelegate.swift */; };
 		E483B8351DC34C2200728383 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483B8341DC34C2200728383 /* ViewController.swift */; };
 		E483B8381DC34C2200728383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E483B8361DC34C2200728383 /* Main.storyboard */; };
@@ -57,6 +62,11 @@
 		E41F5C361DC4246B00682917 /* NextLevelSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextLevelSession.swift; sourceTree = "<group>"; };
 		E42B165D1DC42CBF0032D3DA /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
 		E42B165F1DC446850032D3DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E42B16611DC46F9A0032D3DA /* Grabber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grabber.swift; sourceTree = "<group>"; };
+		E42B16631DC4728B0032D3DA /* VideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
+		E42B16641DC4728B0032D3DA /* VideoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTableViewController.xib; sourceTree = "<group>"; };
+		E42B16671DC4729B0032D3DA /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		E42B16681DC4729B0032D3DA /* VideoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTableViewCell.xib; sourceTree = "<group>"; };
 		E483B82F1DC34C2200728383 /* playform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E483B8321DC34C2200728383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E483B8341DC34C2200728383 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +152,11 @@
 			children = (
 				E483B8321DC34C2200728383 /* AppDelegate.swift */,
 				E483B8341DC34C2200728383 /* ViewController.swift */,
+				E42B16611DC46F9A0032D3DA /* Grabber.swift */,
+				E42B16671DC4729B0032D3DA /* VideoTableViewCell.swift */,
+				E42B16681DC4729B0032D3DA /* VideoTableViewCell.xib */,
+				E42B16631DC4728B0032D3DA /* VideoTableViewController.swift */,
+				E42B16641DC4728B0032D3DA /* VideoTableViewController.xib */,
 				E41F5C2F1DC4246B00682917 /* NextLevel.h */,
 				E41F5C301DC4246B00682917 /* NextLevel.swift */,
 				E41F5C311DC4246B00682917 /* NextLevel+Additions.swift */,
@@ -289,7 +304,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42B166A1DC4729B0032D3DA /* VideoTableViewCell.xib in Resources */,
 				E483B83D1DC34C2200728383 /* LaunchScreen.storyboard in Resources */,
+				E42B16661DC4728B0032D3DA /* VideoTableViewController.xib in Resources */,
 				E483B83A1DC34C2200728383 /* Assets.xcassets in Resources */,
 				E42B16601DC446850032D3DA /* GoogleService-Info.plist in Resources */,
 				E483B8381DC34C2200728383 /* Main.storyboard in Resources */,
@@ -366,9 +383,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42B16651DC4728B0032D3DA /* VideoTableViewController.swift in Sources */,
 				E41F5C391DC4246B00682917 /* NextLevel+AVFoundation.swift in Sources */,
+				E42B16621DC46F9A0032D3DA /* Grabber.swift in Sources */,
 				E483B8351DC34C2200728383 /* ViewController.swift in Sources */,
 				E41F5C3B1DC4246B00682917 /* NextLevelClip.swift in Sources */,
+				E42B16691DC4729B0032D3DA /* VideoTableViewCell.swift in Sources */,
 				E41F5C381DC4246B00682917 /* NextLevel+Additions.swift in Sources */,
 				E41F5C371DC4246B00682917 /* NextLevel.swift in Sources */,
 				E41F5C3A1DC4246B00682917 /* NextLevel+Metadata.swift in Sources */,

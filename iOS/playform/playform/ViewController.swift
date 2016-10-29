@@ -46,6 +46,7 @@ class ViewController: UIViewController {
     
     //MARK: - some firebase things
     var storageRef: FIRStorageReference!
+    var dbRef: FIRDatabaseReference!
     
     // MARK: - object lifecycle
     
@@ -67,8 +68,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //let tst = Grabber()
+        //tst.grabData()
         
         storageRef = FIRStorage.storage().reference()
+        dbRef = FIRDatabase.database().reference()
         
         zoomTracker = 0
         
@@ -84,6 +88,8 @@ class ViewController: UIViewController {
                 }
             })
         }
+        
+        Grabber.sharedInstance.start()
 
         
         self.view.backgroundColor = UIColor.black
@@ -255,17 +261,12 @@ extension ViewController {
         self.photoTapGestureRecognizer?.isEnabled = true
         NextLevel.sharedInstance.session?.mergeClips(usingPreset: AVAssetExportPresetHighestQuality, completionHandler: { (url: URL?, error: Error?) in
             
-            let filepath = "fathers_day" + "test" + url!.lastPathComponent
+
             
-            self.storageRef.child(filepath)
-                .putFile(url!, metadata: nil) { (metadata, error) in
-                    if let error = error {
-                        print("Error uploading: \(error)")
-                        //self.urlTextView.text = "Upload Failed"
-                        return
-                    }
-                    //self.uploadSuccess(metadata!, storagePath: filepath)
-            }
+            //self.dbRef.child(dbPath).updateChildValues([AnyHashable : Any])
+            
+            Grabber.sharedInstance.putData(url: url!, category: "fathers_day")
+            
             
             if let videoURL = url {
                 
@@ -364,6 +365,7 @@ extension ViewController: UIGestureRecognizerDelegate {
         let previewLayer = NextLevel.sharedInstance.previewLayer
         let adjustedPoint = previewLayer.captureDevicePointOfInterest(for: tapPoint)
         NextLevel.sharedInstance.focusExposeAndAdjustWhiteBalance(atAdjustedPoint: adjustedPoint)
+        //NextLevel.sharedInstance.focusExposeAndAdjustWhiteBalance(atAdjustedPoint: tapPoint)
     }
     
     internal func handleZoomPanGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer){
