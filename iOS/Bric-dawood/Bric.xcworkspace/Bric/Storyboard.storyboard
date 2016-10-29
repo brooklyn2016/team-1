@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fy5-up-x64">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Upload View Controller-->
+        <scene sceneID="wvB-5K-uvd">
+            <objects>
+                <viewController id="fy5-up-x64" customClass="UploadViewController" customModule="Bric" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zn5-Cc-jtA"/>
+                        <viewControllerLayoutGuide type="bottom" id="fj8-C2-bCQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7b1-D3-hg3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-j8-ZAC">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZWd-SY-EON">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="437" id="4yA-oJ-QNO"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagCell" id="FYc-dT-IWg">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FYc-dT-IWg" id="MIv-gj-LEX">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-fd-Gz6">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="dR3-nG-qWJ"/>
+                                </constraints>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="upload:" destination="fy5-up-x64" eventType="touchUpInside" id="662-yR-i8P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cIh-j8-ZAC" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leadingMargin" constant="62" id="Pdk-wu-xsf"/>
+                            <constraint firstAttribute="bottom" secondItem="AeA-fd-Gz6" secondAttribute="bottom" constant="20" symbolic="YES" id="UAa-TC-UVe"/>
+                            <constraint firstItem="ZWd-SY-EON" firstAttribute="top" secondItem="cIh-j8-ZAC" secondAttribute="bottom" constant="43" id="Xgm-v6-YlK"/>
+                            <constraint firstAttribute="trailing" secondItem="ZWd-SY-EON" secondAttribute="trailing" id="Y7j-cl-ySf"/>
+                            <constraint firstItem="ZWd-SY-EON" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leading" id="Zaz-zs-rgN"/>
+                            <constraint firstItem="fj8-C2-bCQ" firstAttribute="top" secondItem="ZWd-SY-EON" secondAttribute="bottom" constant="83" id="fB9-tV-Kb7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cIh-j8-ZAC" secondAttribute="trailing" constant="72" id="m5B-Aw-YNP"/>
+                            <constraint firstItem="AeA-fd-Gz6" firstAttribute="centerX" secondItem="cIh-j8-ZAC" secondAttribute="centerX" id="uDF-tF-66R"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ZWd-SY-EON" id="R2X-Uv-puP"/>
+                        <outlet property="titleTextField" destination="cIh-j8-ZAC" id="Uau-0B-ehX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YPu-L8-yT6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327.19999999999999" y="104.7976011994003"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,10 @@
+target 'Bric' do
+
+    use_frameworks!
+
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
+    pod 'Google/SignIn'
+
+end
