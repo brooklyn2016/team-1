@@ -1,6 +1,36 @@
-<h1>HTML5 local video file player example</h1>
-<div id="message"></div>
-<style type="text/css" src="styles.css"></style>
-<input type="file" accept="video/*"/>
-<video controls autoplay></video>
-<script type="text/javascript" src="app.js"></script>
+<html>
+<head>
+    <title>Subway Maps</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body onload="onload();">
+    <video id="idle_video" onended="onVideoEnded();"></video>
+    <script>
+        var video_list      = [
+            "videos/1.mp4",
+            "videos/2.mp4"
+                            ];
+        var video_index     = 0;
+        var video_player    = null;
+
+        function onload(){
+            console.log("body loaded");
+            video_player        = document.getElementById("idle_video");
+            video_player.setAttribute("src", video_list[video_index]);
+            video_player.play();
+        }
+
+        function onVideoEnded(){
+            console.log("video ended");
+            if(video_index < video_list.length - 1){
+                video_index++;
+            }
+            else{
+                video_index = 0;
+            }
+            video_player.setAttribute("src", video_list[video_index]);
+            video_player.play();
+        }
+    </script>
+</body>
