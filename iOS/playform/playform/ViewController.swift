@@ -31,6 +31,9 @@ class ViewController: UIViewController {
     internal var controlDockView: UIView?
     
     internal var recordButton: UIImageView?
+    
+    internal var longRecordButton: UIButton?
+    
     internal var flipButton: UIButton?
     internal var flashButton: UIButton?
     internal var saveButton: UIButton?
@@ -121,6 +124,13 @@ class ViewController: UIViewController {
             recordButton.addGestureRecognizer(longPressGestureRecognizer)
         }
         
+        self.longRecordButton = UIButton(type: .custom)
+        if let longRecordButton = self.longRecordButton {
+            longRecordButton.setImage(UIImage(named: "flip_button"), for: .normal)
+            longRecordButton.sizeToFit()
+            longRecordButton.addTarget(self, action: #selector(handleFlipButton(_:)), for: .touchUpInside)
+        }
+        
         self.flipButton = UIButton(type: .custom)
         if let flipButton = self.flipButton {
             flipButton.setImage(UIImage(named: "flip_button"), for: .normal)
@@ -136,7 +146,7 @@ class ViewController: UIViewController {
         }
         
         // capture control "dock"
-        let controlDockHeight = screenBounds.height * 0.2
+        let controlDockHeight = screenBounds.height * 0.35
         self.controlDockView = UIView(frame: CGRect(x: 0, y: screenBounds.height - controlDockHeight, width: screenBounds.width, height: controlDockHeight))
         if let controlDockView = self.controlDockView {
             controlDockView.backgroundColor = UIColor.clear
