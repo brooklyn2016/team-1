@@ -11,6 +11,12 @@
 		A136175A1DC4534B00B0D8EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A13617591DC4534B00B0D8EA /* GoogleService-Info.plist */; };
 		A136175C1DC46C2300B0D8EA /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A136175B1DC46C2300B0D8EA /* Storyboard.storyboard */; };
 		A136175E1DC46C6200B0D8EA /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A136175D1DC46C6200B0D8EA /* UploadViewController.swift */; };
+		A13617651DC49E7300B0D8EA /* videoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13617641DC49E7300B0D8EA /* videoViewController.swift */; };
+		A13617671DC49E9000B0D8EA /* videoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13617661DC49E9000B0D8EA /* videoStoryboard.storyboard */; };
+		A13617691DC4AAAB00B0D8EA /* UPLOAD BUTTON.png in Resources */ = {isa = PBXBuildFile; fileRef = A13617681DC4AAAB00B0D8EA /* UPLOAD BUTTON.png */; };
+		A136176B1DC4AAF100B0D8EA /* BRIC FLIX BUTTON.png in Resources */ = {isa = PBXBuildFile; fileRef = A136176A1DC4AAF100B0D8EA /* BRIC FLIX BUTTON.png */; };
+		A136176D1DC4AAF600B0D8EA /* BRIC FAM JAM BUTTON.png in Resources */ = {isa = PBXBuildFile; fileRef = A136176C1DC4AAF600B0D8EA /* BRIC FAM JAM BUTTON.png */; };
+		A136176F1DC4AAFB00B0D8EA /* BK HOUSE PARTY BUTTON.png in Resources */ = {isa = PBXBuildFile; fileRef = A136176E1DC4AAFB00B0D8EA /* BK HOUSE PARTY BUTTON.png */; };
 		A1A40AE01DC4278D00E196D8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A40ADF1DC4278D00E196D8 /* MainViewController.swift */; };
 		A1A40AE31DC4492300E196D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A1A40AE21DC4492300E196D8 /* Podfile */; };
 		A1B8BA391DC41B3300211C83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B8BA381DC41B3300211C83 /* AppDelegate.swift */; };
@@ -47,6 +53,13 @@
 		A13617591DC4534B00B0D8EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A136175B1DC46C2300B0D8EA /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		A136175D1DC46C6200B0D8EA /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		A13617631DC491D500B0D8EA /* JAY Z, Kanye West - Otis ft. Otis Redding.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JAY Z, Kanye West - Otis ft. Otis Redding.mp4"; sourceTree = "<group>"; };
+		A13617641DC49E7300B0D8EA /* videoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = videoViewController.swift; sourceTree = "<group>"; };
+		A13617661DC49E9000B0D8EA /* videoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = videoStoryboard.storyboard; sourceTree = "<group>"; };
+		A13617681DC4AAAB00B0D8EA /* UPLOAD BUTTON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UPLOAD BUTTON.png"; sourceTree = "<group>"; };
+		A136176A1DC4AAF100B0D8EA /* BRIC FLIX BUTTON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BRIC FLIX BUTTON.png"; sourceTree = "<group>"; };
+		A136176C1DC4AAF600B0D8EA /* BRIC FAM JAM BUTTON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BRIC FAM JAM BUTTON.png"; sourceTree = "<group>"; };
+		A136176E1DC4AAFB00B0D8EA /* BK HOUSE PARTY BUTTON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BK HOUSE PARTY BUTTON.png"; sourceTree = "<group>"; };
 		A1A40ADF1DC4278D00E196D8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A1A40AE11DC438FD00E196D8 /* Bric.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bric.entitlements; sourceTree = "<group>"; };
 		A1A40AE21DC4492300E196D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
@@ -140,6 +153,8 @@
 				A1B8BA3A1DC41B3300211C83 /* ViewController.swift */,
 				A1B8BA3C1DC41B3300211C83 /* Main.storyboard */,
 				A136175B1DC46C2300B0D8EA /* Storyboard.storyboard */,
+				A13617641DC49E7300B0D8EA /* videoViewController.swift */,
+				A13617661DC49E9000B0D8EA /* videoStoryboard.storyboard */,
 				A136175D1DC46C6200B0D8EA /* UploadViewController.swift */,
 				A1A40ADF1DC4278D00E196D8 /* MainViewController.swift */,
 				A1B8BA3F1DC41B3300211C83 /* Assets.xcassets */,
@@ -147,6 +162,11 @@
 				A1B8BA441DC41B3300211C83 /* Info.plist */,
 				A1A40AE21DC4492300E196D8 /* Podfile */,
 				A13617591DC4534B00B0D8EA /* GoogleService-Info.plist */,
+				A13617631DC491D500B0D8EA /* JAY Z, Kanye West - Otis ft. Otis Redding.mp4 */,
+				A13617681DC4AAAB00B0D8EA /* UPLOAD BUTTON.png */,
+				A136176A1DC4AAF100B0D8EA /* BRIC FLIX BUTTON.png */,
+				A136176C1DC4AAF600B0D8EA /* BRIC FAM JAM BUTTON.png */,
+				A136176E1DC4AAFB00B0D8EA /* BK HOUSE PARTY BUTTON.png */,
 			);
 			path = Bric;
 			sourceTree = "<group>";
@@ -295,9 +315,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B8BA431DC41B3300211C83 /* LaunchScreen.storyboard in Resources */,
+				A136176B1DC4AAF100B0D8EA /* BRIC FLIX BUTTON.png in Resources */,
+				A136176D1DC4AAF600B0D8EA /* BRIC FAM JAM BUTTON.png in Resources */,
+				A136176F1DC4AAFB00B0D8EA /* BK HOUSE PARTY BUTTON.png in Resources */,
+				A13617671DC49E9000B0D8EA /* videoStoryboard.storyboard in Resources */,
 				A1B8BA401DC41B3300211C83 /* Assets.xcassets in Resources */,
 				A136175A1DC4534B00B0D8EA /* GoogleService-Info.plist in Resources */,
 				A1A40AE31DC4492300E196D8 /* Podfile in Resources */,
+				A13617691DC4AAAB00B0D8EA /* UPLOAD BUTTON.png in Resources */,
 				A1B8BA3E1DC41B3300211C83 /* Main.storyboard in Resources */,
 				A136175C1DC46C2300B0D8EA /* Storyboard.storyboard in Resources */,
 			);
@@ -375,6 +400,7 @@
 				A1A40AE01DC4278D00E196D8 /* MainViewController.swift in Sources */,
 				A136175E1DC46C6200B0D8EA /* UploadViewController.swift in Sources */,
 				A1B8BA3B1DC41B3300211C83 /* ViewController.swift in Sources */,
+				A13617651DC49E7300B0D8EA /* videoViewController.swift in Sources */,
 				A1B8BA391DC41B3300211C83 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
