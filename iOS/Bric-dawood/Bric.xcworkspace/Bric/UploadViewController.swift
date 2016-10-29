@@ -13,11 +13,14 @@ class UploadViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var tableView: UITableView!
     
+    /*
     let tagsArray: [UIImage] = [
         UIImage(named: "BRIC FLIX BUTTON.png")!,
         UIImage(named: "BRIC FAM JAM BUTTON.png")!,
         UIImage(named: "BK HOUSE PARTY BUTTON.png")!
     ]
+   */
+    let tagsArray = ["Bric Flix", "Bric Fam Jam", "BK House Party"]
 
     let textCellIdentifier = "TagCell"
 
@@ -56,8 +59,8 @@ class UploadViewController: UIViewController, UITableViewDataSource, UITableView
         
         let row = indexPath.row
         
-        cell.imageView?.image = tagsArray[row]
-        //cell.textLabel?.text = tagsArray[row]
+        //cell.imageView?.image = tagsArray[row]
+        cell.textLabel?.text = tagsArray[row]
         
         return cell
     }

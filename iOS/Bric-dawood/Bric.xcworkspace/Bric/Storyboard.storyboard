@@ -19,15 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-j8-ZAC">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZWd-SY-EON">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="437" id="4yA-oJ-QNO"/>
+                                    <constraint firstAttribute="height" constant="436" id="4yA-oJ-QNO"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagCell" id="FYc-dT-IWg">
@@ -40,27 +35,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-fd-Gz6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyz-OX-bj7">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="f1M-hZ-Mb0"/>
+                                    <constraint firstAttribute="width" constant="118" id="b2k-I4-7a8"/>
                                 </constraints>
-                                <state key="normal" image="UPLOAD BUTTON.png"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="UPLOAD"/>
                                 <connections>
-                                    <action selector="upload:" destination="fy5-up-x64" eventType="touchUpInside" id="662-yR-i8P"/>
+                                    <action selector="upload:" destination="fy5-up-x64" eventType="touchUpInside" id="p1G-dN-oUi"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIh-j8-ZAC">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AeA-fd-Gz6" firstAttribute="top" secondItem="ZWd-SY-EON" secondAttribute="bottom" constant="17" id="KUC-mJ-H7A"/>
-                            <constraint firstItem="cIh-j8-ZAC" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leadingMargin" constant="42" id="Pdk-wu-xsf"/>
-                            <constraint firstItem="ZWd-SY-EON" firstAttribute="top" secondItem="cIh-j8-ZAC" secondAttribute="bottom" constant="45" id="Xgm-v6-YlK"/>
+                            <constraint firstItem="cIh-j8-ZAC" firstAttribute="centerX" secondItem="ZWd-SY-EON" secondAttribute="centerX" id="Esh-LC-rzF"/>
                             <constraint firstAttribute="trailing" secondItem="ZWd-SY-EON" secondAttribute="trailing" id="Y7j-cl-ySf"/>
                             <constraint firstItem="ZWd-SY-EON" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leading" id="Zaz-zs-rgN"/>
-                            <constraint firstItem="fj8-C2-bCQ" firstAttribute="top" secondItem="AeA-fd-Gz6" secondAttribute="bottom" constant="27" id="eBD-kM-LRR"/>
-                            <constraint firstItem="fj8-C2-bCQ" firstAttribute="top" secondItem="ZWd-SY-EON" secondAttribute="bottom" constant="83" id="fB9-tV-Kb7"/>
-                            <constraint firstItem="AeA-fd-Gz6" firstAttribute="centerX" secondItem="ZWd-SY-EON" secondAttribute="centerX" id="kzy-GV-8As"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cIh-j8-ZAC" secondAttribute="trailing" constant="42" id="m5B-Aw-YNP"/>
+                            <constraint firstItem="fj8-C2-bCQ" firstAttribute="top" secondItem="ZWd-SY-EON" secondAttribute="bottom" constant="84" id="fB9-tV-Kb7"/>
+                            <constraint firstItem="Nyz-OX-bj7" firstAttribute="top" secondItem="ZWd-SY-EON" secondAttribute="bottom" constant="20" id="fku-LE-gqt"/>
+                            <constraint firstAttribute="bottom" secondItem="Nyz-OX-bj7" secondAttribute="bottom" constant="20" symbolic="YES" id="ktd-CC-avt"/>
+                            <constraint firstItem="cIh-j8-ZAC" firstAttribute="leading" secondItem="7b1-D3-hg3" secondAttribute="leadingMargin" constant="42" id="uGb-u3-GqD"/>
+                            <constraint firstItem="ZWd-SY-EON" firstAttribute="top" secondItem="cIh-j8-ZAC" secondAttribute="bottom" constant="34" id="vpb-Ia-WEt"/>
+                            <constraint firstItem="Nyz-OX-bj7" firstAttribute="centerX" secondItem="ZWd-SY-EON" secondAttribute="centerX" id="yHn-Mu-eK5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -73,7 +74,4 @@
             <point key="canvasLocation" x="-327.19999999999999" y="104.7976011994003"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="UPLOAD BUTTON.png" width="543" height="232"/>
-    </resources>
 </document>
